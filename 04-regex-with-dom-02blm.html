@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Skilvul</title>
+  </head>
+  <body>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" />
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" />
+    <button id="btn-submit" style="display: block; margin-top: 10px">
+      submit
+    </button>
+    <script>
+      /// EDIT DOWN HERE
+      let regexPsw = new RegExp ("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")
+      let regexEmail = new RegExp (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+      let emailJS = document.getElementById("email")
+      let pswJS = document.getElementById("password")
+      let btnsubmit = document.getElementById("btn-submit")
+
+      btnsubmit.addEventListener("click", function (e){
+        e.preventDefault()
+
+        let isiEmail = emailJS.value;
+        let isipsw = pswJS.value;
+
+        let hasil = regexEmail.test(isiEmail)
+        if (hasil) {
+          hasil = regexPsw.test(isipsw)
+          if (hasil) {
+            alert ("Welcome to The Jungle")
+          } else{
+            alert ("tolong masukkan password yang valid")
+          }
+        
+        } else{
+            alert ("tolong masukkan email yang valid")
+        }
+      })
+    </script>
+  </body>
+</html>
